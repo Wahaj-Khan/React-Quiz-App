@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { quiz } from '../../constant/quizMaterial';
+import Button from '../Button/Button';
 
 const Question = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -66,23 +67,9 @@ const Question = () => {
       </div>
 
       {currentQuestionIndex < quiz.length - 1 ? (
-        <div className="flex flex-1 justify-center mt-10">
-          <button
-            onClick={handleNextQuestion}
-            className="flex justify-center self-center items-center gap-2 w-28 h-12 cursor-pointer rounded-xl shadow-xl text-white text-lg font-semibold bg-slate-900 hover:shadow-md hover:shadow-[#fff] active:scale-95 hover:scale-105 duration-300"
-          >
-            Next
-          </button>
-        </div>
+        <Button onClick={handleNextQuestion} btnText={"Next"} />
       ) : (
-        <div className="flex flex-1 justify-center mt-10">
-          <button
-            onClick={handleSubmit}
-            className="flex justify-center self-center items-center gap-2 w-28 h-12 cursor-pointer rounded-xl shadow-xl text-white text-lg font-semibold bg-slate-900 hover:shadow-md hover:shadow-[#fff] active:scale-95 hover:scale-105 duration-300"
-          >
-            Submit
-          </button>
-        </div>
+        <Button onClick={handleSubmit} btnText={"Submit"} />
       )}
     </>
 
