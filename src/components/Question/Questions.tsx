@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { quiz } from '../../constant/quizMaterial';
+import Button from '../Button/Button';
 
 const Question = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -44,11 +45,11 @@ const Question = () => {
 
   return (
     <>
-      <div className="w-5/6 mx-32 mt-20">
-        <h1 className="font-bold text-3xl text-[#ffff] ml-4">{currentQuestion.question}</h1>
-        <ul >
+      <div className="flex items-center flex-col w-full mx-0 mt-20">
+        <h1 className="font-bold max-sm::text-2xl text-3xl text-[#ffff] mx-4">{currentQuestion.question}</h1>
+        <ul className='w-5/6' >
           {currentQuestion.answers.map((answer, index) => (
-            <li className={`font-semibold text-xl text-[#ffff] rounded-2xl mt-8 p-8 duration-300 cursor-pointer ${selectedAnswerIndex === index
+            <li className={`font-semibold text-xl max-md:text-base text-[#ffff] rounded-2xl mt-8 max-md:p-4 p-8 duration-300 cursor-pointer ${selectedAnswerIndex === index
               ? answer.isCorrect
                 ? 'bg-green-600'
                 : 'bg-red-600'
@@ -66,23 +67,9 @@ const Question = () => {
       </div>
 
       {currentQuestionIndex < quiz.length - 1 ? (
-        <div className="flex flex-1 justify-center mt-10">
-          <button
-            onClick={handleNextQuestion}
-            className="flex justify-center self-center items-center gap-2 w-28 h-12 cursor-pointer rounded-xl shadow-xl text-white text-lg font-semibold bg-slate-900 hover:shadow-md hover:shadow-[#fff] active:scale-95 hover:scale-105 duration-300"
-          >
-            Next
-          </button>
-        </div>
+        <Button onClick={handleNextQuestion} btnText={"Next"} />
       ) : (
-        <div className="flex flex-1 justify-center mt-10">
-          <button
-            onClick={handleSubmit}
-            className="flex justify-center self-center items-center gap-2 w-28 h-12 cursor-pointer rounded-xl shadow-xl text-white text-lg font-semibold bg-slate-900 hover:shadow-md hover:shadow-[#fff] active:scale-95 hover:scale-105 duration-300"
-          >
-            Submit
-          </button>
-        </div>
+        <Button onClick={handleSubmit} btnText={"Submit"} />
       )}
     </>
 
